@@ -491,7 +491,7 @@ function renderResult() {
   const art = createResultArt(state.currentTestKey, result.key);
 
   resultBanner.className = `result-banner ${test.themeClass}`;
-  resultStamp.textContent = 'Dou测试宇宙';
+  resultStamp.textContent = 'D 测试宇宙';
   resultTitleSmall.textContent = `${state.nickname} 的结果到站`;
   resultMainTitle.textContent = `${test.resultPrefix}${result.name}`;
   resultDescription.textContent = result.description;
