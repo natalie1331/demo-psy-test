@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dou教授的测试宇宙</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-blobs"></div>
+  <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+
+  <div class="app">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✨</div>
+        <div>
+          <h1>Dou教授的测试小宇宙</h1>
+          <p>轻松测人设、深夜模式和心动画风</p>
+        </div>
+      </div>
+      <div class="tagline">三份小测试 · 点开就能玩</div>
+    </div>
+
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+        <div class="hero-grid">
+          <div class="speech-stack">
+            <div class="speech-row">
+              <div class="avatar prof" aria-hidden="true">🎓</div>
+              <div class="bubble">
+                <strong>Hi，我是拥有超强魔法的 Dou 教授。</strong>
+                <p>我的魔法，就是把大家那些说不清的人设和小情绪，统统收进测试宝库。</p>
+              </div>
+            </div>
+            <div class="speech-row">
+              <div class="avatar assistant" aria-hidden="true">🐹</div>
+              <div class="bubble">
+                <strong>Oh no，我是今天下午刚刚来面试的，美丽大方、聪明善良、希望成为小助理的Natalie，开个玩笑，哈哈哈。</strong>
+                <p>今天我负责陪你轻轻松松测出隐藏画风。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-copy">
+            <div class="hero-kicker">✨ 小助理在线发卡</div>
+            <h2>来都来了，<span>测一下吧。</span></h2>
+            <div class="hero-desc">
+              三个轻松小测试，随手点一个就能开始。没有标准答案，选最像你的那个就行。
+            </div>
+            <div class="hero-note">
+              <div class="chip">6 题以内</div>
+              <div class="chip">测完马上出结果</div>
+              <div class="chip">全程无压力</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" id="testCards"></div>
+        <div class="home-footnote">小提示：这是一份原创趣味测试，结果仅供开心参考。</div>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="screen">
+      <div class="panel quiz-panel">
+        <div class="question-header">
+          <button class="back-btn" id="backHomeBtn">← 返回首页</button>
+          <div class="mini-title" id="quizMiniTitle"></div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-topline">
+            <div id="progressLabel">正在准备题目…</div>
+            <div id="progressCount">0 / 0</div>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="question-card" id="questionCard">
+          <div class="question-main">
+            <div class="question-index" id="questionIndexChip">第 1 题</div>
+            <h3 class="question-text" id="questionText"></h3>
+            <div class="question-hint">小助理提醒：别想太多，选那个最像你的。</div>
+          </div>
+
+          <div class="question-side">
+            <div class="assistant-card">
+              <div class="assistant-mini">🐹</div>
+              <div>
+                <strong>小助理认真记录中…</strong>
+                <p id="assistantLine">选最像你的那个就行。</p>
+              </div>
+            </div>
+            <div class="options" id="optionsBox"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nicknameScreen" class="screen">
+      <div class="panel nickname-card">
+        <div class="nickname-avatar">🐹</div>
+        <h3>最后一步，给这张结果卡写个署名</h3>
+        <p>不写也行，小助理会默认你是「匿名玩家」。</p>
+        <input id="nicknameInput" class="nickname-input" maxlength="20" placeholder="例如：宇宙第一可爱夜猫子" />
+        <div class="button-row">
+          <button class="primary-btn" id="generateResultBtn">生成我的结果卡</button>
+          <button class="secondary-btn" id="skipNicknameBtn">直接生成</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="result-shell">
+        <div class="result-banner" id="resultBanner">
+          <div class="result-topline">
+            <div class="result-stamp" id="resultStamp">Dou教授的测试小宇宙</div>
+            <div class="result-stamp" id="resultTitleSmall">结果到站</div>
+          </div>
+          <h3 id="resultMainTitle"></h3>
+          <p id="resultDescription"></p>
+        </div>
+
+        <div class="result-main-grid">
+          <div class="result-card result-copy-card">
+            <h4>一句拿捏</h4>
+            <div class="quote-line" id="resultQuote"></div>
+            <div class="tag-list" id="resultTags"></div>
+
+            <div class="report-box compact-box">
+              <div class="report-title">小助理碎碎念</div>
+              <p id="resultReport"></p>
+            </div>
+          </div>
+
+          <div class="result-card art-card">
+            <div class="report-title">你的专属人设</div>
+            <div class="result-art" id="resultArt"></div>
+            <div class="art-caption" id="artCaption"></div>
+          </div>
+
+          <div class="result-card chart-card">
+            <div class="report-title">你的状态面板</div>
+            <div class="chart-wrap">
+              <canvas id="radarCanvas" width="320" height="320" aria-label="结果雷达图"></canvas>
+            </div>
+            <div class="metrics" id="metricList"></div>
+          </div>
+        </div>
+
+        <div class="button-row result-buttons">
+          <button class="primary-btn" id="retryBtn">再测一个</button>
+          <button class="secondary-btn" id="retestBtn">重测当前测试</button>
+        </div>
+
+        <div class="footer-note">小提示：这是一份轻松小测试，结果仅供好玩参考。</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
